@@ -14,7 +14,8 @@ addLayer("p", {
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
-        mult = new Decimal(1)
+        mult = new Decimal(0)
+        if (hasUpgrade('p', 11)) gain = gain.add(1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -25,4 +26,11 @@ addLayer("p", {
         {key: "u", description: "U: Create urge", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return true}
+        upgrades: {
+        11: {
+            title: "Discover the idea",
+            description: "Start generating brainrot.",
+            cost: new Decimal(1),
+        },
+    },
 })
