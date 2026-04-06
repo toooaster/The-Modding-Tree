@@ -15,7 +15,6 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
-        if (hasUpgrade('p', 11)) mult = mult.add(1)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -28,8 +27,8 @@ addLayer("p", {
     layerShown(){return true},
     upgrades: {
         11: {
-            title: "Discover the idea",
-            description: "Start generating brainrot.",
+            title: "Leave things unchecked",
+            description: "Double the amount of brainrot you gain.",
             cost: new Decimal(1),
         },
     },
