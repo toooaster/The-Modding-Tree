@@ -42,9 +42,14 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
-	if (hasUpgrade('p', 11)) gain = gain.times(2)
-    if (hasUpgrade('p', 13)) gain = gain.times(upgradeEffect('p', 13))
-    if (hasUpgrade('p', 14)) gain = gain.times(upgradeEffect('p', 14))
+	if (hasUpgrade('u', 11)) gain = gain.times(2)
+	if (hasUpgrade('u', 12)) gain = gain.times(3)
+    if (hasUpgrade('u', 13)) gain = gain.times(upgradeEffect('u', 13))
+    if (hasUpgrade('u', 14)) gain = gain.times(upgradeEffect('u', 14))
+	if (hasUpgrade('u', 21)) gain = gain.times(2)
+	if (hasUpgrade('u', 22)) gain = gain.times(2.69)
+	if (hasUpgrade('u', 23)) gain = gain.times(3.46)
+
 	return gain
 }
 
@@ -58,7 +63,7 @@ var displayThings = [
 
 // Determines when the game "ends"
 function isEndgame() {
-	return player.points.gte(new Decimal("e280000000"))
+	return player.points.gte(new Decimal("10000000000000000000000000000000"))
 }
 
 
