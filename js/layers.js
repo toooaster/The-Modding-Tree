@@ -37,7 +37,25 @@ addLayer("p", {
             description: "Urge is multiplied based on brainrot.",
             cost: new Decimal(3),
                 effect() {
-                    return player[this.layer].points.add(1).pow(0.6)
+                    return player[this.layer].points.add(1).pow(0.35)
+                },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        13: {
+            title: "Neuron activation",
+            description: "Brainrot is multiplied based on urge.",
+            cost: new Decimal(5),
+                effect() {
+                    return player[this.layer].points.add(1).pow(0.5)
+                },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+        14: {
+            title: "Feedback loop",
+            description: "Brainrot is multiplied based on brainrot.",
+            cost: new Decimal(15),
+                effect() {
+                    return player.points.add(10).log(10)
                 },
             effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
         },
