@@ -15,6 +15,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -31,5 +32,14 @@ addLayer("p", {
             description: "Double the amount of brainrot you gain.",
             cost: new Decimal(1),
         },
-    },
+        12: {
+            title: "Glorify minor discomforts",
+            description: "Urge is multiplied based on brainrot.",
+            cost: new Decimal(3),
+                effect() {
+                    return player[this.layer].points.add(1).pow(0.6)
+                },
+            effectDisplay() { return format(upgradeEffect(this.layer, this.id))+"x" },
+        },
+    }
 })
